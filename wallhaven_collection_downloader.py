@@ -54,13 +54,13 @@ def main(api_key, collection_id, username, out_dir):
 
 
 if __name__ == "__main__":
-    parser = ArgumentParser(description="Download a wallhaven collection.")
+    parser = ArgumentParser(prog=f"python {os.path.basename(__file__)}", description="Download a wallhaven collection.")
     parser.add_argument(
         "-k", "--api-key", dest="api_key", required=True, help="Your API key from your wallhaven account"
     )
     parser.add_argument("-i", "--id", dest="collection_id", required=True, help="The collection ID")
     parser.add_argument("-u", "--username", dest="username", required=True, help="Username of the collection owner")
-    parser.add_argument("-o", "--output", dest="out_dir", default="pics", help="Output directory (default: pics)")
+    parser.add_argument("-o", "--output", dest="out_dir", default="pics", help="Output directory (optional, default: pics)")
     args = parser.parse_args()
 
     main(args.api_key, args.collection_id, args.username, args.out_dir)
