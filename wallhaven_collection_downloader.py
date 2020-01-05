@@ -3,9 +3,9 @@
 from argparse import ArgumentParser
 import json
 import os
-import requests
 import shutil
 
+import requests
 
 base_url = "https://wallhaven.cc/api/v1/collections"
 
@@ -16,7 +16,7 @@ def download_image(pic_url, out_dir, filename):
         os.mkdir(out_dir)
     filename = f"{out_dir}/{filename}"
     response = requests.get(pic_url, stream=True)
-    with open(filename, 'wb') as out_file:
+    with open(filename, "wb") as out_file:
         shutil.copyfileobj(response.raw, out_file)
     del response
 
@@ -53,9 +53,11 @@ def main(api_key, collection_id, username, out_dir):
         del response
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = ArgumentParser(description="Download a wallhaven collection.")
-    parser.add_argument("-k", "--api-key", dest="api_key", required=True, help="Your API key from your wallhaven account")
+    parser.add_argument(
+        "-k", "--api-key", dest="api_key", required=True, help="Your API key from your wallhaven account"
+    )
     parser.add_argument("-i", "--id", dest="collection_id", required=True, help="The collection ID")
     parser.add_argument("-u", "--username", dest="username", required=True, help="Username of the collection owner")
     parser.add_argument("-o", "--output", dest="out_dir", default="pics", help="Output directory (default: pics)")
