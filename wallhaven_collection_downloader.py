@@ -60,7 +60,9 @@ if __name__ == "__main__":
     )
     parser.add_argument("-i", "--id", dest="collection_id", required=True, help="The collection ID")
     parser.add_argument("-u", "--username", dest="username", required=True, help="Username of the collection owner")
-    parser.add_argument("-o", "--output", dest="out_dir", default="pics", help="Output directory (optional, default: pics)")
+    parser.add_argument(
+        "-o", "--output", dest="out_dir", default="pics", help="Output directory (optional, default: pics)"
+    )
     args = parser.parse_args()
 
     main(args.api_key, args.collection_id, args.username, args.out_dir)
